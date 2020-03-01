@@ -1,11 +1,10 @@
 <?php
-namespace JAWA\Classes;
+namespace JAWA;
 
-use JAWA\JAWABase;
 use PDO;
 use PDOException;
 
-class Connection extends JAWABase
+class JAWAConnection
 {
     private $pdo;
 

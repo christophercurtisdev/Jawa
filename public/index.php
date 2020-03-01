@@ -1,8 +1,7 @@
 <?php
 include "../init.php";
-
-use JAWA\Classes\Connection;
-
+echo "hi";
+use JAWA\JAWAConnection;
 
 echo "i got here0";
-$conn = new Connection;
+$conn = new JAWAConnection;
