@@ -6,7 +6,7 @@ use PDOException;
 
 class JAWAConnection
 {
-    private $pdo;
+    private PDO $pdo;
 
     public function __construct()
     {
@@ -16,6 +16,26 @@ class JAWAConnection
         } catch (PDOException $e){
             echo "Failed to connect: ".$e->getMessage();
         }
+    }
+
+    public function makeTable(string $tableName, array $columns)
+    {
+
+    }
+
+    public function dropTable($tableName)
+    {
+
+    }
+
+    public function addRow(JAWAModel $model)
+    {
+
+    }
+
+    public function deleteRow(int $id)
+    {
+
     }
 }
 

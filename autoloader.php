@@ -24,14 +24,9 @@ class Autoloader
         {
             include $filename;
         }
-        
-        //IMPORT CLASSES THAT USE JAWA
-        foreach (glob(__DIR__.'/classes/*.php') as $filename)
-        {
-            include $filename;
-        }
 
-        foreach (glob(__DIR__.'/classes/*/*.php') as $filename)
+        //IMPORT USER DEFINED CLASSES
+        foreach (glob(__DIR__.'/Application/*/*.php') as $filename)
         {
             include $filename;
         }
