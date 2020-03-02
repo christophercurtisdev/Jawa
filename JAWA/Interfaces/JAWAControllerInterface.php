@@ -16,5 +16,5 @@ interface JAWAControllerInterface
     public function createMany(): ?JAWAView;
     public function destroy(int $id): ?string;
     public function listRoutes(): array;
-
+    public function defineRoutes(): array;
 }

@@ -1,7 +1,9 @@
 <?php
+namespace Application\Views;
 
+use JAWA\JAWAView;
 
-class ExampleView
+class ExampleView extends JAWAView
 {
 
 }

@@ -4,9 +4,8 @@ namespace JAWA;
 
 use JAWA\Interfaces\JAWAControllerInterface;
 
-class JAWAController implements JAWAControllerInterface
+abstract class JAWAController implements JAWAControllerInterface
 {
-
     public function index(): ?array
     {
         // TODO: Implement index() method.

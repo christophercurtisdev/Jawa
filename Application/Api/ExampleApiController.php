@@ -1,7 +1,9 @@
 <?php
+namespace Application\ApiControllers;
 
+use JAWA\JAWAApiController;
 
-class ExampleApiController
+class ExampleApiController extends JAWAApiController
 {
 
 }

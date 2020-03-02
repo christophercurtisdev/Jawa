@@ -6,16 +6,27 @@ use PDOException;
 
 class JAWAConnection
 {
-    private PDO $pdo;
+    private static PDO $pdo;
+    private static $instance = null;
 
-    public function __construct()
+    private function __construct()
     {
         try{
             $dsn = 'mysql:dbname='.getenv('DEFAULT_SCHEMA').';host='.getenv('DB_HOST').';port='.getenv('DB_PORT');
-            $this->pdo = new PDO($dsn,getenv('DB_USERNAME'),getenv('DB_PASSWORD'));
+            JAWAConnection::$pdo = new PDO($dsn,getenv('DB_USERNAME'),getenv('DB_PASSWORD'));
         } catch (PDOException $e){
             echo "Failed to connect: ".$e->getMessage();
         }
+    }
+
+    public static function getInstance()
+    {
+        if (self::$instance == null)
+        {
+            self::$instance = new JAWAConnection();
+        }
+
+        return self::$instance;
     }
 
     public function makeTable(string $tableName, array $columns)

@@ -2,4 +2,4 @@
 include "../init.php";
 use JAWA\JAWAConnection;
 
-$conn = new JAWAConnection;
+$conn = JAWAConnection::getInstance();

@@ -4,7 +4,7 @@ namespace JAWA;
 
 use JAWA\Interfaces\JAWAViewInterface;
 
-class JAWAView implements JAWAViewInterface
+abstract class JAWAView implements JAWAViewInterface
 {
 
 }

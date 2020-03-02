@@ -3,7 +3,7 @@ namespace JAWA;
 
 use JAWA\Interfaces\JAWAApiControllerInterface;
 
-class JAWAApiController implements JAWAApiControllerInterface
+abstract class JAWAApiController implements JAWAApiControllerInterface
 {
     public function index(): ?array
     {
