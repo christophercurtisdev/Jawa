@@ -7,7 +7,10 @@ use JAWA\JAWAConnection;
 
 $conn = JAWAConnection::getInstance();
 
-foreach (glob('Application'.DIRECTORY_SEPARATOR.'Models'.DIRECTORY_SEPARATOR.'*.php') as $class)
+foreach (get_declared_classes() as $class)
 {
-    echo $file;
+    if(strpos($class,DIRECTORY_SEPARATOR.'Models'.DIRECTORY_SEPARATOR)){
+        $object = new $class([]);
+        JAWAConnection::makeTable($object::tableName(), $object::columns(), $object::tablePrefix());
+    }
 }

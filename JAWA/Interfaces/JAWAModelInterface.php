@@ -3,15 +3,13 @@ namespace JAWA\Interfaces;
 
 interface JAWAModelInterface 
 {
-    function getColumns() : array;
-    function setColumns(array $array) : void;
-    function getTablePrefix() : string;
-    function setTablePrefix(string $prefix) : void;
-    function getTableName(): string;
-    function setTableName(string $string): void;
-    function getFields(): array;
+    static function columns() : array;
+    static function setColumns(array $array) : void;
+    static function tablePrefix() : string;
+    static function setTablePrefix(string $prefix) : void;
+    static function tableName(): string;
+    static function setTableName(string $string): void;
+    function fields(): array;
     function setFields(array $array): void;
-    function getField($var);
-    function setField($field, $value): void;
-    function makeTable(): void;
+    function validateFields(array $array): bool;
 }

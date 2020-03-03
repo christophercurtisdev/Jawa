@@ -25,14 +25,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/repos/coin3-repo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Application/Models" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Application" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Application\Models" />
       <recent name="C:\xampp\htdocs" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Application" />
       <recent name="C:\xampp\htdocs" />
     </key>
   </component>
@@ -48,7 +49,7 @@
       <updated>1583140556693</updated>
       <workItem from="1583140561816" duration="10419000" />
       <workItem from="1583159420126" duration="10724000" />
-      <workItem from="1583225723577" duration="15281000" />
+      <workItem from="1583225723577" duration="24623000" />
     </task>
     <servers />
   </component>
@@ -56,18 +57,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583150352709">
+    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583247439875">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583150352709" />
+    <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583247439875" />
     <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1583226709552">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="620" y="260" key="FileChooserDialogImpl/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583226709552" />
-    <state x="658" y="319" key="NewPhpClassDialog" timestamp="1583147100782">
+    <state x="658" y="319" key="NewPhpClassDialog" timestamp="1583243531022">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="658" y="319" key="NewPhpClassDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583147100782" />
+    <state x="658" y="319" key="NewPhpClassDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583243531022" />
     <state x="674" y="428" key="NewPhpFileDialog" timestamp="1583229336243">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

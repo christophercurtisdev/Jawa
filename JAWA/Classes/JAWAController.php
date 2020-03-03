@@ -6,7 +6,9 @@ use JAWA\Interfaces\JAWAControllerInterface;
 
 abstract class JAWAController implements JAWAControllerInterface
 {
-    public function index(): ?array
+    protected static $routes;
+
+    public function index(): ?JAWAView
     {
         // TODO: Implement index() method.
     }

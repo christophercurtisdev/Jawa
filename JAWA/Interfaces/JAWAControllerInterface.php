@@ -6,7 +6,7 @@ use JAWA\JAWAView;
 
 interface JAWAControllerInterface
 {
-    function index(): ?array;
+    function index(): ?JAWAView;
     function show(int $id): ?JAWAView;
     function showFiltered(string $sql): ?array;
     function update(int $id, array $array): ?JAWAView;

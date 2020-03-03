@@ -6,9 +6,9 @@ use PDOException;
 
 class JAWAConnection
 {
-    private static PDO $pdo;
+    private static $pdo;
     private static $instance = null;
-    private static array $existingPrefixes;
+    private static $existingPrefixes;
 
     private function __construct()
     {
@@ -44,10 +44,10 @@ class JAWAConnection
         return self::$instance;
     }
 
-    public function makeTable(string $tableName, array $columns, string $columnPrefix = null)
+    public static function makeTable(string $tableName, array $columns, string $columnPrefix = null)
     {
         // Is prefix specified, should it be, and does it already exist
-        if(!getenv('DISABLE_COLUMN_PREFIXING'))
+        if(!getenv('DISABLE_COLUMN_PREFIXING') && !empty(self::$existingPrefixes))
         {
             if(!$columnPrefix) {
                 return "Prefix missing, disable force column prefixing by adding 'DISABLE_COLUMN_PREFIXING = true' to env.php file";
@@ -71,8 +71,8 @@ class JAWAConnection
         if($stmt->execute() == 1){
             // Add prefix to prefixes table
             self::$existingPrefixes[] = $columnPrefix;
-            $ept = self::$pdo->prepare('INSERT INTO existing_prefix_table (`ept_prefix`, `ept_table`) VALUES ('.$columnPrefix.', '.$tableName.')');
-            return $ept->execute();
+            $etp = self::$pdo->prepare('INSERT INTO existing_table_prefixes (etp_prefix, etp_table) VALUES (\''.$columnPrefix.'\', \''.$tableName.'\');');
+            $etp->execute();
         }
     }
 
