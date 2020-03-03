@@ -10,34 +10,34 @@ abstract class JAWAModel implements JAWAModelInterface
     protected static $tablePrefix;
     protected static $tableName;
 
-    public static function columns(): array
+    public static function columns(array $array = null): ?array
     {
-        return self::$columns;
+        if(!empty($array)){
+            self::$columns = $array;
+            return null;
+        } else {
+            return self::$columns;
+        }
     }
 
-    public static function setColumns(array $array): void
+    public static function tablePrefix(string $string = null): ?string
     {
-        self::$columns = $array;
+        if($string){
+            self::$tablePrefix = $string;
+            return null;
+        } else {
+            return self::$tablePrefix;
+        }
     }
 
-    public static function tablePrefix(): string
+    public static function tableName(string $string = null): ?string
     {
-        return self::$tablePrefix;
-    }
-
-    public static function setTablePrefix(string $prefix): void
-    {
-        self::$tablePrefix = $prefix;
-    }
-
-    public static function tableName(): string
-    {
-        return self::$tableName;
-    }
-
-    public static function setTableName(string $string): void
-    {
-        self::$tableName = $string;
+        if($string){
+            self::$tableName = $string;
+            return null;
+        } else {
+            return self::$tableName;
+        }
     }
 
     public function validateFields(array $array): bool
