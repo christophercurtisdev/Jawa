@@ -3,11 +3,15 @@ namespace JAWA\Interfaces;
 
 interface JAWAModelInterface 
 {
-    public function getAll() : ?array;
-    public function getById(int $id) : ?self;
-    public function getWhere(string $sql) : ?array;
-    public function insert(array $array) : ?string;
-    public function insertMany(array $array) : ?string;
-    public function update(int $id, array $array) : bool;
-    public function getColumns() : array;
+    function getColumns() : array;
+    function setColumns(array $array) : void;
+    function getTablePrefix() : string;
+    function setTablePrefix(string $prefix) : void;
+    function getTableName(): string;
+    function setTableName(string $string): void;
+    function getFields(): array;
+    function setFields(array $array): void;
+    function getField($var);
+    function setField($field, $value): void;
+    function makeTable(): void;
 }

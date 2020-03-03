@@ -60,4 +60,9 @@ abstract class JAWAController implements JAWAControllerInterface
     {
         // TODO: Implement listRoutes() method.
     }
+
+    public function defineRoutes(): array
+    {
+        // TODO: Implement defineRoutes() method.
+    }
 }

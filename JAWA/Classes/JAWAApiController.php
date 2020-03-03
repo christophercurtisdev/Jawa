@@ -44,4 +44,9 @@ abstract class JAWAApiController implements JAWAApiControllerInterface
     {
         // TODO: Implement listRoutes() method.
     }
+
+    public function defineRoutes(): array
+    {
+        // TODO: Implement defineRoutes() method.
+    }
 }

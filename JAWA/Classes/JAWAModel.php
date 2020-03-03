@@ -1,49 +1,84 @@
 <?php
+
 namespace JAWA;
 
 use JAWA\Interfaces\JAWAModelInterface;
 
 abstract class JAWAModel implements JAWAModelInterface
 {
-    public function getAll(): ?array
-    {
-        // TODO: Implement getAll() method.
-        $conn = JAWAConnection::getInstance();
-    }
-
-    public function getById(int $id): ?self
-    {
-        // TODO: Implement getById() method.
-        $conn = JAWAConnection::getInstance();
-    }
-
-    public function getWhere(string $sql): ?array
-    {
-        // TODO: Implement getWhere() method.
-        $conn = JAWAConnection::getInstance();
-    }
-
-    public function insert(array $array): ?string
-    {
-        // TODO: Implement insert() method.
-        $conn = JAWAConnection::getInstance();
-    }
-
-    public function insertMany(array $array): ?string
-    {
-        // TODO: Implement insertMany() method.
-        $conn = JAWAConnection::getInstance();
-    }
-
-    public function update(int $id, array $array): bool
-    {
-        // TODO: Implement update() method.
-        $conn = JAWAConnection::getInstance();
-    }
+    protected static $fields;
+    protected static $columns;
+    protected static $tablePrefix;
+    protected static $tableName;
 
     public function getColumns(): array
     {
-        // TODO: Implement getColumns() method.
+        return self::$columns;
+    }
+
+    public function setColumns(array $array): void
+    {
+        self::$columns = $array;
+    }
+
+    public function getTablePrefix(): string
+    {
+        return self::$tablePrefix;
+    }
+
+    public function setTablePrefix(string $prefix): void
+    {
+        self::$tablePrefix = $prefix;
+    }
+
+    public function getTableName(): string
+    {
+        return self::$tableName;
+    }
+
+    public function setTableName(string $string): void
+    {
+        self::$tableName = $string;
+    }
+
+
+    public function getFields(): array
+    {
+        return self::$fields;
+    }
+
+    public function setFields(array $array): void
+    {
+        $canAssignValues = true;
+        foreach ($array as $key => $value)
+        {
+            if(!in_array($key, self::getColumns()))
+            {
+                $canAssignValues = false;
+            }
+        }
+        if($canAssignValues)
+        {
+            self::$fields = $array;
+        }
+    }
+
+    public function getField($var)
+    {
+        return self::$fields[$var];
+    }
+
+    public function setField($field, $value): void
+    {
+        if(in_array($field, self::getColumns()))
+        {
+            self::$fields[$field] = $value;
+        }
+    }
+
+    public function makeTable(): void
+    {
         $conn = JAWAConnection::getInstance();
+        $conn->makeTable(self::getTableName(), self::getColumns(), self::getTablePrefix());
     }
 }
