@@ -126,4 +126,34 @@ class JAWAConnection
             return ["JAWA failed to retrieve any data from the '".$table."' table :("];
         }
     }
+
+    public function applyConstraint($type, $table, $column, $data)
+    {
+        $sql = '';
+        switch ($type){
+            case "NOT NULL":
+                $sql = "ALTER TABLE {$table} MODIFY {$column} {$data} NOT NULL;";
+                break;
+            case "UNIQUE":
+                $sql = "ALTER TABLE {$table} ADD UNIQUE ({$column});";
+                break;
+            case "CHECK":
+                $sql = "ALTER TABLE {$table} ADD CHECK ({$column});";
+                break;
+            case "DEFAULT":
+                $sql = "ALTER TABLE {$table} ALTER {$column} SET DEFAULT {$data};";
+                break;
+            default:
+                break;
+        }
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function applyForeignKey($table, $column, $referenceTable, $referenceColumn, $fkName)
+    {
+        $sql = "ALTER TABLE {$table} ADD CONSTRAINT {$fkName} FOREIGN KEY ({$column}) REFERENCES {$referenceTable}({$referenceColumn});";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute();
+    }
 }

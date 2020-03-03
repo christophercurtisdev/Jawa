@@ -10,11 +10,11 @@ class ExampleModel extends JAWAModel
     public function __construct(array $fields)
     {
         self::columns([
-            'title' => 'VARCHAR(50) NOT NULL DEFAULT \'Some Title\'',
-            'author' => 'VARCHAR(50) NOT NULL DEFAULT \'Some Author\'',
-            'type' => 'VARCHAR(50) NOT NULL DEFAULT \'Fiction\'',
-            'publisher' => 'VARCHAR(50) NOT NULL DEFAULT \'Some Publisher\'',
-            'publishDate' => 'TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()',
+            'title' => 'VARCHAR(50)',
+            'author' => 'VARCHAR(50)',
+            'type' => 'VARCHAR(50)',
+            'publisher' => 'VARCHAR(50)',
+            'publishDate' => 'TIMESTAMP',
         ]);
         self::tablePrefix('b_');
         self::tableName('books');
