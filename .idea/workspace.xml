@@ -25,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Application/Models" />
+    <property name="last_opened_file_path" value="$USER_HOME$/repos/coin-legacy-repo" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -49,7 +49,8 @@
       <updated>1583140556693</updated>
       <workItem from="1583140561816" duration="10419000" />
       <workItem from="1583159420126" duration="10724000" />
-      <workItem from="1583225723577" duration="27593000" />
+      <workItem from="1583225723577" duration="27685000" />
+      <workItem from="1583320570961" duration="10911000" />
     </task>
     <servers />
   </component>
@@ -61,22 +62,22 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583247439875" />
-    <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1583226709552">
+    <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1583326735145">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="620" y="260" key="FileChooserDialogImpl/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583226709552" />
-    <state x="658" y="319" key="NewPhpClassDialog" timestamp="1583254961389">
+    <state x="620" y="260" key="FileChooserDialogImpl/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583326735145" />
+    <state x="658" y="319" key="NewPhpClassDialog" timestamp="1583322369273">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="658" y="319" key="NewPhpClassDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583254961389" />
+    <state x="658" y="319" key="NewPhpClassDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583322369273" />
     <state x="674" y="428" key="NewPhpFileDialog" timestamp="1583229336243">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="674" y="428" key="NewPhpFileDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583229336243" />
-    <state x="536" y="103" width="607" height="804" key="find.popup" timestamp="1583164731057">
+    <state x="536" y="103" width="607" height="804" key="find.popup" timestamp="1583342972733">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="536" y="103" width="607" height="804" key="find.popup/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583164731057" />
+    <state x="536" y="103" width="607" height="804" key="find.popup/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583342972733" />
     <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1583253206470">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

@@ -3,9 +3,10 @@ namespace JAWA\Interfaces;
 
 interface JAWAModelInterface 
 {
-    static function columns(array $array = null) : ?array;
-    static function tablePrefix(string $prefix) : ?string;
-    static function tableName(string $string = null): ?string;
-    function fields(array $array = null): ?array;
-    function validateFields(array $array): bool;
+    public function __construct(array $fields);
+    public static function columns(array $array = null) : ?array;
+    public static function tablePrefix(string $prefix) : ?string;
+    public static function tableName(string $string = null): ?string;
+    public function fields(array $array = null): ?array;
+    public function validateFields(array $array): bool;
 }

@@ -6,7 +6,7 @@ use PDOException;
 
 class JAWAConnection
 {
-    private static $pdo;
+    private static PDO $pdo;
     private static $instance = null;
     private static $existingPrefixes;
 
@@ -18,19 +18,23 @@ class JAWAConnection
         } catch (PDOException $e){
             echo "Failed to connect: ".$e->getMessage();
         }
+
+        // Done manually as it prevents reliance on makeTable (if that method is ever edited)
         $stmt = self::$pdo->prepare('CREATE TABLE IF NOT EXISTS `existing_table_prefixes` (`etp_id` int(11) NOT NULL AUTO_INCREMENT, `etp_prefix` VARCHAR(10) NOT NULL, `etp_table` VARCHAR(50) NOT NULL, PRIMARY KEY (`etp_id`));');
         $stmt->execute();
+        $stmt = self::$pdo->prepare('CREATE TABLE IF NOT EXISTS `table_cache` (`tc_id` int(11) NOT NULL AUTO_INCREMENT, `tc_table_name` VARCHAR(50) NOT NULL, `tc_table_columns` VARCHAR(200) NOT NULL, `tc_column_prefix` VARCHAR(10), PRIMARY KEY (`tc_id`));');
+        $stmt->execute();
         $data = self::$pdo->query('SELECT * FROM existing_table_prefixes');
+
+        $this->insertRow("existing_table_prefixes", ["etp_prefix" => "etp_", "etp_table" => "existing_table_prefixes"]);
         if($data) {
-            foreach ($data->fetchAll(PDO::FETCH_ASSOC) as $row){
+            foreach ($data->fetchAll(PDO::FETCH_ASSOC) as $row) {
                 self::$existingPrefixes[] = $row['etp_prefix'];
             }
-        } else {
-            self::$existingPrefixes = [];
         }
     }
 
-    public static function getPrefixes()
+    public function getPrefixes()
     {
         return self::$existingPrefixes;
     }
@@ -44,7 +48,7 @@ class JAWAConnection
         return self::$instance;
     }
 
-    public static function makeTable(string $tableName, array $columns, string $columnPrefix = null)
+    public function makeTable(string $tableName, array $columns, string $columnPrefix = null, bool $cache = true)
     {
         // Is prefix specified, should it be, and does it already exist
         if(!getenv('DISABLE_COLUMN_PREFIXING') && !empty(self::$existingPrefixes))
@@ -74,6 +78,18 @@ class JAWAConnection
             $etp = self::$pdo->prepare('INSERT INTO existing_table_prefixes (etp_prefix, etp_table) VALUES (\''.$columnPrefix.'\', \''.$tableName.'\');');
             $etp->execute();
         }
+
+        if($cache){
+            $string = '';
+            foreach ($columns as $key => $value){
+                $string.= $key.":".$value.",";
+            }
+            $string = substr_replace($string, "", -1);
+
+            $stmt = self::$pdo->prepare("INSERT INTO table_cache (tc_table_name, tc_table_columns, tc_column_prefix) VALUES ('{$tableName}', '{$string}', '{$columnPrefix}');");
+
+            $stmt->execute();
+        }
     }
 
     public function dropTable($tableName)
@@ -87,9 +103,23 @@ class JAWAConnection
         return $stmt->execute();
     }
 
-    public function addRow(JAWAModel $model)
+    public function insertModel(JAWAModel $model)
     {
 
+    }
+
+    public function insertRow($table, $columns)
+    {
+        $keys = [];
+        $values = [];
+        foreach ($columns as $key => $value){
+            $keys[] = $key;
+            $values[] = $value;
+        }
+        $valuesString = implode("', '", $values);
+        $keysString = implode(", ", $keys);
+        $stmt = self::$pdo->prepare("INSERT INTO {$table} ({$keysString}) VALUES ('{$valuesString}');");
+        $stmt->execute();
     }
 
     public function deleteRow(int $id): ?string
@@ -127,25 +157,30 @@ class JAWAConnection
         }
     }
 
-    public function applyConstraint($type, $table, $column, $data)
+    public function applyNotNull($table, $column, $datatype)
     {
-        $sql = '';
-        switch ($type){
-            case "NOT NULL":
-                $sql = "ALTER TABLE {$table} MODIFY {$column} {$data} NOT NULL;";
-                break;
-            case "UNIQUE":
-                $sql = "ALTER TABLE {$table} ADD UNIQUE ({$column});";
-                break;
-            case "CHECK":
-                $sql = "ALTER TABLE {$table} ADD CHECK ({$column});";
-                break;
-            case "DEFAULT":
-                $sql = "ALTER TABLE {$table} ALTER {$column} SET DEFAULT {$data};";
-                break;
-            default:
-                break;
-        }
+        $sql = "ALTER TABLE {$table} MODIFY {$column} {$datatype} NOT NULL;";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function applyUnique($table, $column)
+    {
+        $sql = "ALTER TABLE {$table} ADD UNIQUE ({$column});";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function applyCheck($table, $column)
+    {
+        $sql = "ALTER TABLE {$table} ADD CHECK ({$column});";
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function applyDefault($table, $column, $value)
+    {
+        $sql = "ALTER TABLE {$table} ALTER {$column} SET DEFAULT {$value};";
         $stmt = self::$pdo->prepare($sql);
         $stmt->execute();
     }

@@ -7,18 +7,41 @@ abstract class JAWAFactory implements JAWAFactoryInterface
 {
     protected static $model;
 
-    public function getModel(): object
+    public static function getModel(): string
     {
-        // TODO: Implement getModel() method.
+        return self::$model;
     }
 
-    public function setModel($model)
+    public static function setModel($model)
     {
-        // TODO: Implement setModel() method.
+        self::$model = $model;
     }
 
-    public function generateModels(int $count)
+    public function generateModel()
     {
-        // TODO: Implement generateModels() method.
+        $model = self::getModel();
+        return new $model([]);
     }
-}
+
+     public function commitModel(JAWAModel $model)
+     {
+         // TODO: Implement commitModel() method.
+     }
+
+     public function generateModels(int $count)
+     {
+         $i = 0;
+         $modelArray = [];
+         while($i < $count){
+             $model = self::getModel();
+             $modelArray[] = new $model([]);
+             $i++;
+         }
+         return $modelArray;
+     }
+
+     public function commitModels(array $array)
+     {
+         // TODO: Implement commitModels() method.
+     }
+ }
