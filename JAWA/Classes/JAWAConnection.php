@@ -26,7 +26,11 @@ class JAWAConnection
         $stmt->execute();
         $data = self::$pdo->query('SELECT * FROM existing_table_prefixes');
 
-        $this->insertRow("existing_table_prefixes", ["etp_prefix" => "etp_", "etp_table" => "existing_table_prefixes"]);
+        if(empty(self::allWhere("existing_table_prefixes", "etp_prefix = 'etp_'"))) {
+            $this->insertRow("existing_table_prefixes", ["etp_prefix" => "etp_", "etp_table" => "existing_table_prefixes"]);
+            $this->insertRow("existing_table_prefixes", ["etp_prefix" => "tc_", "etp_table" => "table_cache"]);
+        }
+
         if($data) {
             foreach ($data->fetchAll(PDO::FETCH_ASSOC) as $row) {
                 self::$existingPrefixes[] = $row['etp_prefix'];
@@ -95,17 +99,47 @@ class JAWAConnection
     public function dropTable($tableName)
     {
         $stmt = self::$pdo->prepare('DROP TABLE IF EXISTS '.$tableName);
-        $stmt->execute();
-        if($stmt != 1){
+        if($stmt->execute() != 1){
             return 'Drop Failed';
         }
-        $stmt = self::$pdo->prepare('DELETE FROM existing_table_prefixes WHERE etp_table = '.$tableName);
+        $stmt = self::$pdo->prepare("DELETE FROM existing_table_prefixes WHERE etp_table = '".$tableName."'");
         return $stmt->execute();
     }
 
     public function insertModel(JAWAModel $model)
     {
 
+    }
+
+    public function emptyTableCache()
+    {
+        $stmt = self::$pdo->prepare('DROP TABLE `table_cache`');
+        $stmt->execute();
+        $stmt = self::$pdo->prepare('CREATE TABLE `table_cache` (`tc_id` int(11) NOT NULL AUTO_INCREMENT, `tc_table_name` VARCHAR(50) NOT NULL, `tc_table_columns` VARCHAR(200) NOT NULL, `tc_column_prefix` VARCHAR(10), PRIMARY KEY (`tc_id`));');
+        $stmt->execute();
+    }
+
+    public function refreshTableCache()
+    {
+        $this->emptyTableCache();
+        $string = '';
+
+        $sql = "INSERT INTO table_cache (tc_table_name, tc_table_columns, tc_column_prefix) VALUES ";
+
+        foreach (get_declared_classes() as $class) {
+            if (strpos($class, DIRECTORY_SEPARATOR . 'Models' . DIRECTORY_SEPARATOR)) {
+                $object = new $class([]);
+                foreach ($object::columns() as $key => $value){
+                    $string.= $key.":".$value.",";
+                }
+                $string = substr_replace($string, "", -1);
+
+                $sql.= "('{$object::tableName()}', '{$string}', '{$object::tablePrefix()}'),";
+            }
+        }
+        $sql = substr_replace($sql, "", -1);
+        $stmt = self::$pdo->prepare($sql);
+        $stmt->execute();
     }
 
     public function insertRow($table, $columns)
@@ -143,17 +177,17 @@ class JAWAConnection
         if($data){
             return $data->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            return ["JAWA failed to retrieve any data from the '".$table."' table :("];
+            return [];
         }
     }
 
     public function allWhere($table, $where): array
     {
-        $data = self::$pdo->query('SELECT * FROM '.$table.' '.$where);
+        $data = self::$pdo->query('SELECT * FROM '.$table.' WHERE '.$where);
         if($data){
             return $data->fetchAll(PDO::FETCH_ASSOC);
         } else {
-            return ["JAWA failed to retrieve any data from the '".$table."' table :("];
+            return [];
         }
     }
 

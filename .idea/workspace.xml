@@ -25,16 +25,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/repos/coin-legacy-repo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Application\Models" />
-      <recent name="C:\xampp\htdocs" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Application" />
       <recent name="C:\xampp\htdocs" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs" />
+      <recent name="C:\xampp\htdocs\Application\Models" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -51,6 +51,7 @@
       <workItem from="1583159420126" duration="10724000" />
       <workItem from="1583225723577" duration="27685000" />
       <workItem from="1583320570961" duration="10911000" />
+      <workItem from="1583398050561" duration="6551000" />
     </task>
     <servers />
   </component>
