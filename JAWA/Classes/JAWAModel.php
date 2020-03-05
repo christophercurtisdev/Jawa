@@ -40,18 +40,27 @@ abstract class JAWAModel implements JAWAModelInterface
         }
     }
 
-    public function validateFields(array $array): bool
+    public function validateFields($array): bool
     {
-        if(count($array) != count($this->columns())){
-            return false;
-        }
-        foreach ($array as $key => $value)
-        {
-            if(!in_array($key, array_keys($this->columns())))
-            {
+        if(is_array($array)) {
+            if (count($array) != count($this->columns())) {
                 return false;
             }
+            foreach ($array as $key => $value) {
+                if (!in_array($key, array_keys($this->columns()))) {
+                    return false;
+                }
+            }
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    public function fields(array $array = null): ?array
+    {
+        if($this->validateFields($array)){
+            $this->fields = $array;
+        }
+        return $this->fields;
     }
 }

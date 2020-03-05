@@ -12,6 +12,13 @@
       <executable />
     </execution>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -26,9 +33,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\JAWA\Classes" />
       <recent name="C:\xampp\htdocs\Application" />
       <recent name="C:\xampp\htdocs" />
     </key>
@@ -51,7 +60,7 @@
       <workItem from="1583159420126" duration="10724000" />
       <workItem from="1583225723577" duration="27685000" />
       <workItem from="1583320570961" duration="10911000" />
-      <workItem from="1583398050561" duration="6551000" />
+      <workItem from="1583398050561" duration="19465000" />
     </task>
     <servers />
   </component>
@@ -67,10 +76,10 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="620" y="260" key="FileChooserDialogImpl/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583326735145" />
-    <state x="658" y="319" key="NewPhpClassDialog" timestamp="1583322369273">
+    <state x="658" y="319" key="NewPhpClassDialog" timestamp="1583423789895">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="658" y="319" key="NewPhpClassDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583322369273" />
+    <state x="658" y="319" key="NewPhpClassDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583423789895" />
     <state x="674" y="428" key="NewPhpFileDialog" timestamp="1583229336243">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

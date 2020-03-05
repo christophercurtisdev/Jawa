@@ -1,23 +1,21 @@
 <?php
 namespace Application\Models;
 
+
 use JAWA\JAWAModel;
 
-class ExampleModel extends JAWAModel
+class User extends JAWAModel
 {
     protected $fields;
 
     public function __construct(array $fields)
     {
         self::columns([
-            'title' => 'VARCHAR(50)',
-            'author' => 'VARCHAR(50)',
-            'type' => 'VARCHAR(50)',
-            'publisher' => 'VARCHAR(50)',
-            'publishDate' => 'TIMESTAMP',
+            'username' => 'VARCHAR(50)',
+            'password' => 'VARCHAR(255)',
         ]);
-        self::tablePrefix('b_');
-        self::tableName('books');
+        self::tablePrefix('u_');
+        self::tableName('users');
 
         //If any of the fields dont match the static columns, the model will return empty.
         $this->fields($fields);
