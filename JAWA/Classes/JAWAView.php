@@ -7,7 +7,7 @@ abstract class JAWAView implements JAWAViewInterface
 {
     public function getView($action)
     {
-        return require $this->getViewDir().$action.'.php';
+        return header('Location: '.$this->getViewDir().$action);
     }
 
     public function getViewDir(): string

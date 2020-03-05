@@ -108,7 +108,7 @@ class JAWAConnection
 
     public function insertModel(JAWAModel $model)
     {
-
+        $this->insertRow($model->tableName(), $model->fields());
     }
 
     public function emptyTableCache()

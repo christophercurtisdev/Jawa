@@ -6,16 +6,16 @@ use JAWA\JAWAView;
 
 interface JAWAControllerInterface
 {
-    function index(): ?JAWAView;
-    function show(int $id): ?JAWAView;
-    function showFiltered(string $sql): ?array;
-    function update(int $id, array $array): ?JAWAView;
-    function edit(int $id): ?JAWAView;
-    function store(array $array): ?JAWAView;
-    function create(): ?JAWAView;
-    function storeMany(array $array): ?array;
-    function createMany(): ?JAWAView;
-    function destroy(int $id): ?string;
-    function listRoutes(): array;
-    function defineRoutes(): array;
+    function index();
+    function show(int $id);
+    function showFiltered(string $sql);
+    function update(int $id, array $array);
+    function edit(int $id);
+    function store(array $array);
+    function create();
+    function storeMany(array $array);
+    function createMany();
+    function destroy(int $id);
+    function listRoutes();
+    function defineRoutes();
 }

@@ -8,10 +8,10 @@ abstract class JAWACrypt
         '$6$rounds=5000$'
     ];
 
-    public static function strongCrypt($data, $salt): string
+    public static function strongCrypt($data, $salt)
     {
         $hash = $data;
-        $hashCount = str_split(decbin(str_pad(getenv('JAWACRYPT_SECRET'), 10, '0', STR_PAD_LEFT)));
+        $hashCount = str_split(str_pad(decbin(getenv('JAWACRYPT_SECRET')), 10, '0', STR_PAD_LEFT));
         foreach ($hashCount as $iteration) {
             $hash = crypt($hash, self::$cryptionary[$iteration] . $salt . '$');
         }

@@ -14,30 +14,24 @@ abstract class JAWAModel implements JAWAModelInterface
     {
         if(!empty($array)){
             self::$columns = $array;
-            return null;
-        } else {
-            return self::$columns;
         }
+        return self::$columns;
     }
 
     public static function tablePrefix(string $string = null): ?string
     {
         if($string){
             self::$tablePrefix = $string;
-            return null;
-        } else {
-            return self::$tablePrefix;
         }
+        return self::$tablePrefix;
     }
 
     public static function tableName(string $string = null): ?string
     {
         if($string){
             self::$tableName = $string;
-            return null;
-        } else {
-            return self::$tableName;
         }
+        return self::$tableName;
     }
 
     public function validateFields($array): bool
@@ -62,5 +56,10 @@ abstract class JAWAModel implements JAWAModelInterface
             $this->fields = $array;
         }
         return $this->fields;
+    }
+
+    public function all(): ?array
+    {
+        return JAWAConnection::getInstance()->all($this->tableName());
     }
 }
