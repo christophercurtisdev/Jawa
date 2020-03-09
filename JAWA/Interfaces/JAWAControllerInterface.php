@@ -16,6 +16,7 @@ interface JAWAControllerInterface
     function storeMany(array $array);
     function createMany();
     function destroy(int $id);
+    function custom($viewName, $data = null);
     function listRoutes();
     function defineRoutes();
 }

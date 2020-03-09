@@ -6,6 +6,6 @@ namespace JAWA\Interfaces;
 
 interface JAWARouterInterface
 {
-    public function get($route);
-    public function post($route, $data);
+    public static function get($route);
+    public static function post($route, $data);
 }

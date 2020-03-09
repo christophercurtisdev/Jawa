@@ -12,4 +12,4 @@ use JAWA\JAWACrypt;
 //$mod = new User(["username" => "Me", "password" => "Some Password"]);
 //$date = new DateTime();
 //dump(Login::tryLogin("root", "root"));
-echo "This is the example index";
+echo "This is the example edit";

@@ -1,11 +1,12 @@
 <?php
 include "../init.php";
 
-use Application\Views\ExampleView;
-use JAWA\JAWAConnection;
+$url = explode("/", $_SERVER['REQUEST_URI']);
 
-$conn = JAWAConnection::getInstance();
-//$conn->insertRow("MyTable", ["col1", "col2", "col3"]);
-$v = new ExampleView();
-$v->getView('index');
-//require 'views/example/index.php';
+$controller = 'Application\\Controllers\\'.ucfirst($url[1])."Controller";
+$action = $url[2];
+
+$test = new $controller();
+
+dump($action);
+$test->$action();

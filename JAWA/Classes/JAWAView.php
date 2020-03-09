@@ -5,9 +5,9 @@ use JAWA\Interfaces\JAWAViewInterface;
 
 abstract class JAWAView implements JAWAViewInterface
 {
-    public function getView($action)
+    public function getView($action, $data = null)
     {
-        return header('Location: '.$this->getViewDir().$action);
+        require($this->getViewDir().$action.".php");
     }
 
     public function getViewDir(): string

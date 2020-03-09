@@ -10,6 +10,7 @@ if(getenv('DEBUG')){
     error_reporting(E_ALL);
 }
 
+//DEBUGGING
 function dump($data){
     highlight_string(var_export($data, true));
 }

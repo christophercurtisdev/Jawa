@@ -32,18 +32,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/views/example" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\public\views\example" />
+      <recent name="C:\xampp\htdocs" />
+      <recent name="C:\xampp\htdocs\Application\Models" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\JAWA\Classes" />
       <recent name="C:\xampp\htdocs\Application" />
       <recent name="C:\xampp\htdocs" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs" />
-      <recent name="C:\xampp\htdocs\Application\Models" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -61,6 +62,7 @@
       <workItem from="1583225723577" duration="27685000" />
       <workItem from="1583320570961" duration="10911000" />
       <workItem from="1583398050561" duration="22486000" />
+      <workItem from="1583745592166" duration="8061000" />
     </task>
     <servers />
   </component>
@@ -72,10 +74,10 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583247439875" />
-    <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1583326735145">
+    <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1583745588365">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="620" y="260" key="FileChooserDialogImpl/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583326735145" />
+    <state x="620" y="260" key="FileChooserDialogImpl/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583745588365" />
     <state x="658" y="319" key="NewPhpClassDialog" timestamp="1583428029341">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

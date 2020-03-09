@@ -6,18 +6,18 @@ use JAWA\Interfaces\JAWAControllerInterface;
 
 abstract class JAWAController implements JAWAControllerInterface
 {
-    protected static $routes;
-    protected static JAWAModel $model;
-    protected static JAWAView $view;
+    protected $routes;
+    protected JAWAModel $model;
+    protected JAWAView $view;
 
     public function index()
     {
-        return $this->view->getView('index');
+        $this->view->getView('index');
     }
 
     public function show(int $id)
     {
-        return $this->view->getView('show/'.$id);
+        $this->view->getView('show', $id);
     }
 
     public function showFiltered(string $sql)
@@ -27,22 +27,22 @@ abstract class JAWAController implements JAWAControllerInterface
 
     public function update(int $id, array $array)
     {
-        // TODO: Implement update() method.
+        $this->view->getView('update', $array);
     }
 
     public function edit(int $id)
     {
-        // TODO: Implement edit() method.
+        $this->view->getView('edit', $id);
     }
 
     public function store(array $array)
     {
-        // TODO: Implement store() method.
+        $this->view->getView('store', $array);
     }
 
     public function create()
     {
-        // TODO: Implement create() method.
+        $this->view->getView('create');
     }
 
     public function storeMany(array $array)
@@ -57,7 +57,12 @@ abstract class JAWAController implements JAWAControllerInterface
 
     public function destroy(int $id)
     {
-        // TODO: Implement destroy() method.
+        $this->view->getView('destroy', $id);
+    }
+
+    public function custom($viewName, $data = null)
+    {
+        $this->view->getView($viewName, $data);
     }
 
     public function listRoutes()
