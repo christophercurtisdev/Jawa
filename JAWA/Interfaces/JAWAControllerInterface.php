@@ -6,17 +6,7 @@ use JAWA\JAWAView;
 
 interface JAWAControllerInterface
 {
-    function index();
-    function show(int $id);
-    function showFiltered(string $sql);
-    function update(int $id, array $array);
-    function edit(int $id);
-    function store(array $array);
-    function create();
-    function storeMany(array $array);
-    function createMany();
-    function destroy(int $id);
-    function custom($viewName, $data = null);
+    function action($viewName, $data = null);
     function listRoutes();
     function defineRoutes();
 }

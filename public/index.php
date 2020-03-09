@@ -8,5 +8,4 @@ $action = $url[2];
 
 $test = new $controller();
 
-dump($action);
-$test->$action();
+$test->action($action);

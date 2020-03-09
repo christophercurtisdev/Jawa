@@ -10,57 +10,7 @@ abstract class JAWAController implements JAWAControllerInterface
     protected JAWAModel $model;
     protected JAWAView $view;
 
-    public function index()
-    {
-        $this->view->getView('index');
-    }
-
-    public function show(int $id)
-    {
-        $this->view->getView('show', $id);
-    }
-
-    public function showFiltered(string $sql)
-    {
-        // TODO: Implement showFiltered() method.
-    }
-
-    public function update(int $id, array $array)
-    {
-        $this->view->getView('update', $array);
-    }
-
-    public function edit(int $id)
-    {
-        $this->view->getView('edit', $id);
-    }
-
-    public function store(array $array)
-    {
-        $this->view->getView('store', $array);
-    }
-
-    public function create()
-    {
-        $this->view->getView('create');
-    }
-
-    public function storeMany(array $array)
-    {
-        // TODO: Implement storeMany() method.
-    }
-
-    public function createMany()
-    {
-        // TODO: Implement createMany() method.
-    }
-
-    public function destroy(int $id)
-    {
-        $this->view->getView('destroy', $id);
-    }
-
-    public function custom($viewName, $data = null)
+    public function action($viewName, $data = null)
     {
         $this->view->getView($viewName, $data);
     }
