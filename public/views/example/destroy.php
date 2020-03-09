@@ -13,3 +13,4 @@ use JAWA\JAWACrypt;
 //$date = new DateTime();
 //dump(Login::tryLogin("root", "root"));
 echo "This is the example destroy";
+echo $test;

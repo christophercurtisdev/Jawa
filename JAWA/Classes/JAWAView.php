@@ -8,7 +8,8 @@ abstract class JAWAView implements JAWAViewInterface
     public function getView($action, $data = null)
     {
         if($data){
-
+            $test = $data;
+            require($this->getViewDir() . $action . ".php");
         } else {
             require($this->getViewDir() . $action . ".php");
         }
