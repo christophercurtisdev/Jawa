@@ -61,10 +61,10 @@ abstract class JAWAElementBuilder
         }
     }
 
-    public static function buildModelForm(JAWAModel $model)
+    public static function buildModelForm(JAWAModel $model, $id = null)
     {
-        $className = get_class($model);
-        $string = "<form method='POST' action='{$className}'>";
+        $uri = explode("/", $_SERVER['REQUEST_URI'])[1];
+        $string = "<form method='POST' action='/{$uri}/store'>";
         $formInputs = $model::columns();
         //return $formInputs;
         foreach ($formInputs as $name => $type) {
@@ -116,7 +116,8 @@ abstract class JAWAElementBuilder
             $string.= "<br>";
         }
         $string.= self::buildFormElement("submit", "submit", null, null, "Submit");
-        $string.= "</form>";
+        $string.= "</form><br>USE THIS AS A TEMPLATE FOR THE ACTUAL FORM";
+        $string.= $id ? "<form method='post' action='/{$uri}/destroy/{$id}'>".self::buildFormElement("submit", "delete", null, null, "Delete")."</form>" : '';
         return $string;
     }
 }
