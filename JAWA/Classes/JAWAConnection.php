@@ -18,12 +18,15 @@ class JAWAConnection
         } catch (PDOException $e){
             echo "Failed to connect: ".$e->getMessage();
         }
+    }
 
-        // Done manually as it prevents reliance on makeTable (if that method is ever edited)
+    public function setup()
+    {
         $stmt = self::$pdo->prepare('CREATE TABLE IF NOT EXISTS `existing_table_prefixes` (`etp_id` int(11) NOT NULL AUTO_INCREMENT, `etp_prefix` VARCHAR(10) NOT NULL, `etp_table` VARCHAR(50) NOT NULL, PRIMARY KEY (`etp_id`));');
         $stmt->execute();
         $stmt = self::$pdo->prepare('CREATE TABLE IF NOT EXISTS `table_cache` (`tc_id` int(11) NOT NULL AUTO_INCREMENT, `tc_table_name` VARCHAR(50) NOT NULL, `tc_table_columns` VARCHAR(200) NOT NULL, `tc_column_prefix` VARCHAR(10), PRIMARY KEY (`tc_id`));');
         $stmt->execute();
+
         $data = self::$pdo->query('SELECT * FROM existing_table_prefixes');
 
         if(empty(self::allWhere("existing_table_prefixes", "etp_prefix = 'etp_'"))) {
@@ -50,6 +53,16 @@ class JAWAConnection
             self::$instance = new JAWAConnection();
         }
         return self::$instance;
+    }
+
+    public function dropAll()
+    {
+        $db = getenv('DEFAULT_SCHEMA');
+        $tables = $this->query("SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = '{$db}';");
+        foreach ($tables as $table) {
+            $stmt = self::$pdo->prepare("DROP TABLE {$table['TABLE_NAME']}");
+            $stmt->execute();
+        }
     }
 
     public function makeTable(string $tableName, array $columns, string $columnPrefix = null, bool $cache = true)
@@ -108,7 +121,13 @@ class JAWAConnection
 
     public function insertModel(JAWAModel $model)
     {
-        $this->insertRow($model->tableName(), $model->fields());
+        if(!empty($model->fields())) {
+            $columns = [];
+            foreach ($model->fields() as $key => $value){
+                $columns[$model::tablePrefix().$key] = $value;
+            }
+            $this->insertRow($model->tableName(), $columns);
+        }
     }
 
     public function emptyTableCache()
@@ -152,6 +171,7 @@ class JAWAConnection
         }
         $valuesString = implode("', '", $values);
         $keysString = implode(", ", $keys);
+        print_r("INSERT INTO {$table} ({$keysString}) VALUES ('{$valuesString}');");
         $stmt = self::$pdo->prepare("INSERT INTO {$table} ({$keysString}) VALUES ('{$valuesString}');");
         $stmt->execute();
     }
@@ -168,7 +188,8 @@ class JAWAConnection
     public function query($sql)
     {
         $stmt = self::$pdo->prepare($sql);
-        return $stmt->execute();
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function all($table): array

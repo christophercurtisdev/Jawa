@@ -4,7 +4,7 @@ namespace Application\Models;
 
 use JAWA\JAWAModel;
 
-class User extends JAWAModel
+class UserModel extends JAWAModel
 {
     protected $fields;
 
@@ -13,6 +13,7 @@ class User extends JAWAModel
         self::columns([
             'username' => 'VARCHAR(50)',
             'password' => 'VARCHAR(255)',
+            'auth_level' => 'VARCHAR(50)'
         ]);
         self::tablePrefix('u_');
         self::tableName('users');

@@ -6,6 +6,7 @@ Autoloader::register();
 use JAWA\JAWAConnection;
 
 $conn = JAWAConnection::getInstance();
+$conn->setup();
 
 $fresh = $conn->allWhere("information_schema.TABLES", "TABLE_NAME = 'table_cache'");
 

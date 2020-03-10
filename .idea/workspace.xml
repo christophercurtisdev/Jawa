@@ -62,7 +62,8 @@
       <workItem from="1583225723577" duration="27685000" />
       <workItem from="1583320570961" duration="10911000" />
       <workItem from="1583398050561" duration="22486000" />
-      <workItem from="1583745592166" duration="16696000" />
+      <workItem from="1583745592166" duration="18499000" />
+      <workItem from="1583831017218" duration="6032000" />
     </task>
     <servers />
   </component>
@@ -70,6 +71,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="486" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583835603292">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="486" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583835603292" />
     <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583247439875">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -86,10 +91,10 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="674" y="428" key="NewPhpFileDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583761056734" />
-    <state x="536" y="103" width="607" height="804" key="find.popup" timestamp="1583342972733">
+    <state x="536" y="103" width="607" height="804" key="find.popup" timestamp="1583834685885">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="536" y="103" width="607" height="804" key="find.popup/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583342972733" />
+    <state x="536" y="103" width="607" height="804" key="find.popup/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583834685885" />
     <state x="496" y="233" key="run.anything.popup" timestamp="1583425450803">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
