@@ -8,6 +8,9 @@ abstract class Login
 {
     public static function tryLogin($username, $password)
     {
+        if(isset($_SESSION["logged"])){
+            return "Login Successful";
+        }
         return self::checkPassword($username, $password);
     }
 
@@ -20,6 +23,7 @@ abstract class Login
         }
         $hash = JAWACrypt::strongCrypt($password, strtotime($user[0]["u_created_at"]));
         if($hash == $user[0]["u_password"]){
+            $_SESSION['logged'] = $hash;
             return "Login Successful";
         }
         return "Login Failed";

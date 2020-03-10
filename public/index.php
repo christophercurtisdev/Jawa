@@ -1,8 +1,10 @@
 <?php
 require('../init.php');
 
-use JAWA\JAWAElementBuilder;
 
+if(!$_SESSION['logged']){
+    header("Location: login.php");
+}
 $url = explode("/", $_SERVER['REQUEST_URI']);
 if($url[1]) {
     $controller = 'Application\\Controllers\\' . ucfirst($url[1]) . "Controller";
@@ -12,5 +14,4 @@ if($url[1]) {
         echo "404";
     }
 }
-$model = new \Application\Models\ExampleModel([]);
 
