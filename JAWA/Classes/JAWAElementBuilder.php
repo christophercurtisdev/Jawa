@@ -61,6 +61,17 @@ abstract class JAWAElementBuilder
         }
     }
 
+    public static function buildSelectBox($name, $options, $id = null)
+    {
+        $id = $id ? $id : $name;
+        $string = "<select name='{$name}' id='{$id}'>";
+        foreach ($options as $key => $option){
+            $string.= "<option value='{$key}'>{$option}</option>";
+        }
+        $string.= "</select>";
+        return $string;
+    }
+
     public static function buildModelForm(JAWAModel $model, $id = null)
     {
         $uri = explode("/", $_SERVER['REQUEST_URI'])[1];

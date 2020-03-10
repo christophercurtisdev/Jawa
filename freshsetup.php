@@ -17,12 +17,10 @@ foreach (get_declared_classes() as $class)
     }
 }
 
-$pw = \JAWA\JAWACrypt::strongCrypt("root");
-$un = "root";
-$rootUser = new \Application\Models\UserModel([
-    'username' => $un,
-    'password' => $pw,
-    'auth_level' => 'root'
-]);
+$timestamp = date("Y-m-d H:i:s");
 
-JAWAConnection::getInstance()->insertModel($rootUser);
+// CHANGE PASSWORD FROM 'root' WHEN CREATING A NEW PROJECT //
+$pw = \JAWA\JAWACrypt::strongCrypt("root", strtotime($timestamp));
+
+$un = "root";
+JAWAConnection::getInstance()->insertRow("users", ['u_username' => $un, 'u_password' => $pw, 'u_auth_level' => 'root', 'u_created_at' => $timestamp]);

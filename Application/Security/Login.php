@@ -18,7 +18,6 @@ abstract class Login
         if(!$user){
             return $username." not found";
         }
-        //return $user;
         $hash = JAWACrypt::strongCrypt($password, strtotime($user[0]["u_created_at"]));
         if($hash == $user[0]["u_password"]){
             return "Login Successful";

@@ -63,7 +63,7 @@
       <workItem from="1583320570961" duration="10911000" />
       <workItem from="1583398050561" duration="22486000" />
       <workItem from="1583745592166" duration="18499000" />
-      <workItem from="1583831017218" duration="6032000" />
+      <workItem from="1583831017218" duration="11193000" />
     </task>
     <servers />
   </component>
@@ -91,6 +91,10 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="674" y="428" key="NewPhpFileDialog/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583761056734" />
+    <state x="483" y="120" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583843316495">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="483" y="120" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/685.1050.1280.693/1680.0.1680.1010/0.0.1680.1010@0.0.1680.1010" timestamp="1583843316495" />
     <state x="536" y="103" width="607" height="804" key="find.popup" timestamp="1583834685885">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
