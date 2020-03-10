@@ -14,7 +14,7 @@ class UserModel extends JAWAModel
             //'system' => 'VARCHAR(50)', //FOR SEVERAL SYSTEMS IN ONE APP, CHANGE THE JAWACRYPT SECRET AND CONTAIN ALL USERS IN ONE TABLE
             'username' => 'VARCHAR(50)',
             'password' => 'VARCHAR(255)',
-            'auth_level' => 'VARCHAR(50)'
+            'auth_level' => "ENUM('root', 'admin', 'basic')" //ADD TO OR ADJUST TO APPROPRIATE USER GROUPS
         ]);
         self::tablePrefix('u_');
         self::tableName('users');

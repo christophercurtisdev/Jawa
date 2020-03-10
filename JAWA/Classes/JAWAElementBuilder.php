@@ -7,10 +7,7 @@ abstract class JAWAElementBuilder
     public static function buildFormElement($element, $name, $id = null, $class = null, $value = null, $additionalFields = '')
     {
         $details = '';
-        //id='{$id}' name='{$name}'
-        if(!$id){
-            $id = $name;
-        }
+        $id = $id ? $id : $name;
         $details.= "id='{$id}' name='{$name}'";
         $details.= $class ? "class='{$class}' " : "";
         $details.= "value='{$value}'";
@@ -61,10 +58,13 @@ abstract class JAWAElementBuilder
         }
     }
 
-    public static function buildSelectBox($name, $options, $id = null)
+    public static function buildSelectBox($name, $options, $id = null, $class = null, $additionalFields = null)
     {
         $id = $id ? $id : $name;
-        $string = "<select name='{$name}' id='{$id}'>";
+        $string = "<select name='{$name}' id='{$id}'";
+        $string.= $class ? " class='{$class}'" : '';
+        $string.= $additionalFields ? " {$additionalFields}" : '';
+        $string.= ">";
         foreach ($options as $key => $option){
             $string.= "<option value='{$key}'>{$option}</option>";
         }
@@ -122,6 +122,22 @@ abstract class JAWAElementBuilder
                     break;
                 case "TIME":
                     $string.= self::buildFormElement("time", $name, $name).'<br>';
+                    break;
+                case "ENUM":
+                    //turn string: 'ENUM('value1', 'value2', 'value3') into an array: ['value1', 'value2', 'value3']
+                    $values = explode(
+                        ",",
+                        str_replace(
+                            ["'", "\"", ")", " ", "ENUM("],
+                            "",
+                            $model::columns()[$name]
+                        )
+                    ); //this chunk is unpleasant, please refactor
+
+                    foreach ($values as $value){
+                        $optionArray[$value] = $value;
+                    }
+                    self::buildSelectBox($name, $optionArray);
                     break;
             }
             $string.= "<br>";

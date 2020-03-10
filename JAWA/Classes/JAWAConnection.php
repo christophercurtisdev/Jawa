@@ -73,11 +73,11 @@ class JAWAConnection
             if(!$columnPrefix) {
                 return "Prefix missing, disable force column prefixing by adding 'DISABLE_COLUMN_PREFIXING = true' to env.php file";
             }
+
             if(in_array($columnPrefix, self::$existingPrefixes)){
                 return "Prefix already exists.";
             }
         }
-
         // Columns: ['columnName' => 'int(11) NOT NULL default '20', 'columnName' => 'specs'...]
         $sql = 'CREATE TABLE IF NOT EXISTS ' . $tableName . ' (';
         $sql .= '`' . $columnPrefix . 'id` int(11) NOT NULL auto_increment, ';
@@ -87,7 +87,6 @@ class JAWAConnection
         $sql .= '`' . $columnPrefix . 'created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, ';
         $sql .= '`' . $columnPrefix . 'updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, ';
         $sql .= 'PRIMARY KEY (`' . $columnPrefix . 'id`));';
-
         $stmt = self::$pdo->prepare($sql);
         if($stmt->execute() == 1){
             // Add prefix to prefixes table
@@ -97,16 +96,32 @@ class JAWAConnection
         }
 
         if($cache){
-            $string = '';
-            foreach ($columns as $key => $value){
-                $string.= $key.":".$value.",";
-            }
-            $string = substr_replace($string, "", -1);
-
-            $stmt = self::$pdo->prepare("INSERT INTO table_cache (tc_table_name, tc_table_columns, tc_column_prefix) VALUES ('{$tableName}', '{$string}', '{$columnPrefix}');");
-
-            $stmt->execute();
+            $this->addTableCache($columns, $tableName, $columnPrefix);
         }
+    }
+
+    public function addTableCache($columns, $tableName, $columnPrefix)
+    {
+        $string = '';
+        foreach ($columns as $key => $value){
+            $string.= $key.":".$value."|";
+        }
+        $string = urlencode(substr_replace($string, "", -1));
+
+        $stmt = self::$pdo->prepare("INSERT INTO table_cache (tc_table_name, tc_table_columns, tc_column_prefix) VALUES ('{$tableName}', '{$string}', '{$columnPrefix}');");
+        $stmt->execute();
+    }
+
+    public function updateTableCache($columns, $tableName)
+    {
+        $string = '';
+        foreach ($columns as $key => $value){
+            $string.= $key.":".$value."|";
+        }
+        $string = urlencode(substr_replace($string, "", -1));
+
+        $stmt = self::$pdo->prepare("UPDATE table_cache SET tc_table_columns=? WHERE tc_table_name=?;");
+        $stmt->execute([$string, $tableName]);
     }
 
     public function dropTable($tableName)
@@ -171,7 +186,6 @@ class JAWAConnection
         }
         $valuesString = implode("', '", $values);
         $keysString = implode(", ", $keys);
-        print_r("INSERT INTO {$table} ({$keysString}) VALUES ('{$valuesString}');");
         $stmt = self::$pdo->prepare("INSERT INTO {$table} ({$keysString}) VALUES ('{$valuesString}');");
         $stmt->execute();
     }
@@ -188,6 +202,14 @@ class JAWAConnection
     public function query($sql)
     {
         $stmt = self::$pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function allTables()
+    {
+        $db = getenv('DEFAULT_SCHEMA');
+        $stmt = self::$pdo->prepare("SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = '{$db}'");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -1,4 +1,7 @@
 <?php
+require('../init.php');
+
+use JAWA\JAWAElementBuilder;
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
 if($url[1]) {
@@ -9,4 +12,5 @@ if($url[1]) {
         echo "404";
     }
 }
+$model = new \Application\Models\ExampleModel([]);
 
