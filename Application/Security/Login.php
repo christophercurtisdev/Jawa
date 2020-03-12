@@ -9,7 +9,7 @@ abstract class Login
     public static function tryLogin($username, $password)
     {
         if(isset($_SESSION["logged"])){
-            return "Login Successful";
+            return true;
         }
         return self::checkPassword($username, $password);
     }
@@ -19,13 +19,13 @@ abstract class Login
         $conn = JAWAConnection::getInstance();
         $user = $conn->allWhere("users", "u_username = '$username'");
         if(!$user){
-            return $username." not found";
+            return false;
         }
         $hash = JAWACrypt::strongCrypt($password, strtotime($user[0]["u_created_at"]));
         if($hash == $user[0]["u_password"]){
             $_SESSION['logged'] = $hash;
-            return "Login Successful";
+            return true;
         }
-        return "Login Failed";
+        return false;
     }
 }

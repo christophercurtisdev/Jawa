@@ -6,22 +6,26 @@ use JAWA\Interfaces\JAWAControllerInterface;
 
 abstract class JAWAController implements JAWAControllerInterface
 {
-    protected $routes;
+    protected array $routes;
     protected JAWAModel $model;
     protected JAWAView $view;
 
-    public function action($viewName, $data = null)
+    public function action($action, $data = null)
     {
-        $this->view->getView($viewName, $data);
+        if(in_array($action, $this->routes)) {
+            $this->view->getView($action, $data);
+        } else {
+            return "Unauthorised root for this controller";
+        }
     }
 
-    public function listRoutes()
+    public static function resourcefulRoutes()
     {
-        // TODO: Implement listRoutes() method.
+        return ["index", "create", "show", "store", "edit", "update", "destroy"];
     }
 
-    public function defineRoutes()
+    public function routes()
     {
-        // TODO: Implement defineRoutes() method.
+        return $this->routes;
     }
 }

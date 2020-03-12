@@ -5,7 +5,7 @@ require ("../init.php");
 use Application\Security\Login;
 
 if($_POST){
-    echo Login::tryLogin($_POST["username"], $_POST["password"]);
+    Login::tryLogin($_POST["username"], $_POST["password"]);
 }
 
 ?>
