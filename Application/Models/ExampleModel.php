@@ -14,7 +14,7 @@ class ExampleModel extends JAWAModel
             'author' => 'VARCHAR(50)',
             'type' => 'VARCHAR(50)',
             'publisher' => 'VARCHAR(50)',
-            'publishDate' => 'TIMESTAMP',
+            'publish_date' => 'DATE',
         ]);
         self::tablePrefix('b_');
         self::tableName('books');

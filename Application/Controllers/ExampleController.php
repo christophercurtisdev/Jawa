@@ -3,7 +3,6 @@ namespace Application\Controllers;
 
 use Application\Views\ExampleView;
 use JAWA\JAWAController;
-use JAWA\JAWAView;
 
 class ExampleController extends JAWAController
 {

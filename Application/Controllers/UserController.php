@@ -1,9 +1,14 @@
 <?php
 namespace Application\Controllers;
 
-use JAWA\JAWAApiController;
+use Application\Views\UserView;
+use JAWA\JAWAController;
 
-class UserController extends JAWAApiController
+class UserController extends JAWAController
 {
-
+    public function __construct()
+    {
+        $this->view = new UserView();
+        $this->routes = self::resourcefulRoutes();
+    }
 }

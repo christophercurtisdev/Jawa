@@ -23,8 +23,7 @@ abstract class Login
         }
         $hash = JAWACrypt::strongCrypt($password, strtotime($user[0]["u_created_at"]));
         if($hash == $user[0]["u_password"]){
-            $_SESSION['logged'] = $hash;
-            return true;
+            return $hash;
         }
         return false;
     }

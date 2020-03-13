@@ -6,6 +6,6 @@ use JAWA\JAWAModel;
 
 interface JAWAApiControllerInterface
 {
-    function action($viewName, $data = null);
+    function action($action, $data = null);
     function routes();
 }

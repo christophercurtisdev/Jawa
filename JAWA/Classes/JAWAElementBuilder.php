@@ -53,7 +53,7 @@ abstract class JAWAElementBuilder
                 return "<input type='color' {$details}>";
                 break;
             case "submit":
-                return "<input type='submit' {$details}>";
+                return "<button type='submit'>{$name}</button>";
                 break;
         }
     }
@@ -137,12 +137,12 @@ abstract class JAWAElementBuilder
                     foreach ($values as $value){
                         $optionArray[$value] = $value;
                     }
-                    self::buildSelectBox($name, $optionArray);
+                    $string.= self::buildSelectBox($name, $optionArray);
                     break;
             }
             $string.= "<br>";
         }
-        $string.= self::buildFormElement("submit", "submit", null, null, "Submit");
+        $string.= self::buildFormElement("submit", "Submit");
         $string.= "</form><br>USE THIS AS A TEMPLATE FOR THE ACTUAL FORM";
         $string.= $id ? "<form method='post' action='/{$uri}/destroy/{$id}'>".self::buildFormElement("submit", "delete", null, null, "Delete")."</form>" : '';
         return $string;

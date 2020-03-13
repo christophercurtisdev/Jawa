@@ -7,7 +7,6 @@ use JAWA\Interfaces\JAWAControllerInterface;
 abstract class JAWAController implements JAWAControllerInterface
 {
     protected array $routes;
-    protected JAWAModel $model;
     protected JAWAView $view;
 
     public function action($action, $data = null)
@@ -15,7 +14,8 @@ abstract class JAWAController implements JAWAControllerInterface
         if(in_array($action, $this->routes)) {
             $this->view->getView($action, $data);
         } else {
-            return "Unauthorised root for this controller";
+            return [$this->routes, $action];
+            return "Unauthorised route for this controller";
         }
     }
 

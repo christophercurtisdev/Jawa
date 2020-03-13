@@ -5,48 +5,25 @@ use JAWA\Interfaces\JAWAApiControllerInterface;
 
 abstract class JAWAApiController implements JAWAApiControllerInterface
 {
-    public function index(): ?array
+    protected array $routes;
+    protected JAWAView $view;
+
+    function action($action, $data = null)
     {
-        // TODO: Implement index() method.
+        if(in_array($action, $this->routes)) {
+            $this->view->getView($action, $data);
+        } else {
+            return "Unauthorised route for this controller";
+        }
     }
 
-    public function get(int $id): ?JAWAModel
+    public static function resourcefulRoutes()
     {
-        // TODO: Implement get() method.
+        return ["index", "show", "store", "update", "destroy"];
     }
 
-    public function getWhere(string $sql): ?array
-    {
-        // TODO: Implement getWhere() method.
-    }
-
-    public function update(int $id, array $array): ?JAWAModel
-    {
-        // TODO: Implement update() method.
-    }
-
-    public function store(array $array): ?JAWAModel
-    {
-        // TODO: Implement store() method.
-    }
-
-    public function storeMany(array $array): ?array
-    {
-        // TODO: Implement storeMany() method.
-    }
-
-    public function destroy(int $id): ?string
-    {
-        // TODO: Implement destroy() method.
-    }
-
-    public function listRoutes(): array
-    {
-        // TODO: Implement listRoutes() method.
-    }
-
-    public function defineRoutes(): array
-    {
-        // TODO: Implement defineRoutes() method.
-    }
-}
+     function routes()
+     {
+         return $this->routes;
+     }
+ }
