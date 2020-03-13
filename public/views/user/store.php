@@ -4,9 +4,7 @@ use Application\Models\UserModel;
 use JAWA\JAWAConnection;
 use JAWA\JAWACrypt;
 
-$row = JAWACrypt::userCrypt($_POST["password"]);
-$row["u_username"] = $_POST["username"];
-$row["u_auth_level"] = $_POST["auth_level"];
-$user = new UserModel($row);
-JAWAConnection::getInstance()->insertRow("users", $row);
+$timestamp = date("Y-m-d H:i:s");
+$pw = \JAWA\JAWACrypt::strongCrypt($_POST["password"], strtotime($timestamp));
+JAWAConnection::getInstance()->insertRow("users", ['u_username' => $_POST["username"], 'u_password' => $pw, 'u_auth_level' => 'root', 'u_created_at' => $timestamp]);
 header("Location: /user/index");

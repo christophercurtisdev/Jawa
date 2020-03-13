@@ -17,11 +17,4 @@ abstract class JAWACrypt
         }
         return $hash;
     }
-
-    public static function userCrypt(string $password)
-    {
-        $timestamp = ("Y-m-d H:i:s");
-        $hash = self::strongCrypt($password, strtotime($timestamp));
-        return ["u_password" => $hash, "u_created_at" => $timestamp];
-    }
 }
