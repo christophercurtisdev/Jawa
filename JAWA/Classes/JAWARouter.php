@@ -9,7 +9,7 @@ abstract class JAWARouter implements JAWARouterInterface
     {
         $uriParamCount = count($uri);
         switch ($uriParamCount){
-            case 1:
+            case 2:
                 $controller = ucfirst($uri[1])."Controller";
                 $controller = "Application\\Controllers\\{$controller}";
                 if(class_exists($controller)){
@@ -19,7 +19,7 @@ abstract class JAWARouter implements JAWARouterInterface
                     return "Controller not found.";
                 }
                 break;
-            case 2:
+            case 3:
                 $controller = ucfirst($uri[1])."Controller";
                 $controller = "Application\\Controllers\\{$controller}";
                 if(class_exists($controller)){
@@ -29,7 +29,8 @@ abstract class JAWARouter implements JAWARouterInterface
                     return "Controller not found.";
                 }
                 break;
-            case 3:
+            case 4:
+                echo "36";
                 $controller = ucfirst($uri[1])."Controller";
                 $controller = "Application\\Controllers\\{$controller}";
                 if(class_exists($controller)){
