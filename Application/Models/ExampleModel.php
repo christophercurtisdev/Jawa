@@ -7,7 +7,7 @@ class ExampleModel extends JAWAModel
 {
     protected $fields;
 
-    public function __construct(array $fields)
+    public function __construct(array $fields = [])
     {
         self::columns([
             'title' => 'VARCHAR(50)',

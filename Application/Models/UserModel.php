@@ -8,7 +8,7 @@ class UserModel extends JAWAModel
 {
     protected $fields;
 
-    public function __construct(array $fields)
+    public function __construct(array $fields = [])
     {
         self::columns([
             //'system' => 'VARCHAR(50)', //FOR SEVERAL SYSTEMS IN ONE APP, CHANGE THE JAWACRYPT SECRET BUT STILL CONTAIN ALL USERS IN ONE TABLE

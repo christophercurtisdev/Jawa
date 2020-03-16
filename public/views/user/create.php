@@ -3,4 +3,4 @@
 use Application\Models\UserModel;
 use JAWA\JAWAElementBuilder;
 
-echo JAWAElementBuilder::buildModelForm(new UserModel([]));
+echo JAWAElementBuilder::buildModelForm(new UserModel());

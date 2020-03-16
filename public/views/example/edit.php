@@ -13,4 +13,4 @@ use JAWA\JAWAElementBuilder;
 //$mod = new UserModel(["username" => "Me", "password" => "Some Password"]);
 //$date = new DateTime();
 //dump(Login::tryLogin("root", "root"));
-echo JAWAElementBuilder::buildModelForm(new ExampleModel([]), $id);
+echo JAWAElementBuilder::buildModelForm(new ExampleModel(), $id);
