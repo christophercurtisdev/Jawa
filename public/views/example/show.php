@@ -7,9 +7,5 @@ use Application\Security\Login;
 use JAWA\JAWAConnection;
 use JAWA\JAWACrypt;
 
-//echo getenv('DEFAULT_SCHEMA');
-
-//$mod = new UserModel(["username" => "Me", "password" => "Some Password"]);
-//$date = new DateTime();
-//dump(Login::tryLogin("root", "root"));
 echo "This is the example show";
+dump($uriData); //This is the data in the uri after '/example/show/';

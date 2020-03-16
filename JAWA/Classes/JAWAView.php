@@ -5,10 +5,9 @@ use JAWA\Interfaces\JAWAViewInterface;
 
 abstract class JAWAView implements JAWAViewInterface
 {
-    public function getView($action, $data = null)
+    public function getView($action, $uriData = null)
     {
-        if($data){
-            $id = $data;
+        if($uriData){
             require($this->getViewDir() . $action . ".php");
         } else {
             require($this->getViewDir() . $action . ".php");

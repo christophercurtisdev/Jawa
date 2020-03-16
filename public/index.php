@@ -10,4 +10,6 @@ require ('logout.php');
 use JAWA\JAWARouter;
 
 $uri = explode("/", $_SERVER['REQUEST_URI']);
-JAWARouter::processURI($uri);//add $_SESSION['logged'] to method
+if(isset($uri[1])) {
+    JAWARouter::processURI($uri);//add $_SESSION['logged'] to method
+}
