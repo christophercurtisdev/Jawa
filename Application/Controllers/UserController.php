@@ -9,6 +9,7 @@ class UserController extends JAWAController
     public function __construct()
     {
         $this->view = new UserView();
-        $this->routes = self::resourcefulRoutes();
+        $this->userRoutes = self::resourcefulRoutes();
+        $this->guestRoutes = [];
     }
 }

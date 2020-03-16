@@ -9,6 +9,7 @@ class ExampleController extends JAWAController
     public function __construct()
     {
         $this->view = new ExampleView();
-        $this->routes = self::resourcefulRoutes();
+        $this->userRoutes = self::resourcefulRoutes();
+        $this->guestRoutes = self::readOnlyRoutes();
     }
 }

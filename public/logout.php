@@ -2,7 +2,6 @@
 
 if(isset($_POST["logout"])){
     $_SESSION["logged"] = false;
-
     session_destroy();
 } else if($_SESSION["logged"]) {
     ?>

@@ -5,8 +5,9 @@ use JAWA\Interfaces\JAWARouterInterface;
 
 abstract class JAWARouter implements JAWARouterInterface
 {
-    public static function processURI(array $uri)
+    public static function processURI(array $uri)//add $_SESSION['logged'] to method
     {
+        //if !logged then only allow guest actions
         $uriParamCount = count($uri);
         switch ($uriParamCount){
             case 2:
@@ -30,7 +31,6 @@ abstract class JAWARouter implements JAWARouterInterface
                 }
                 break;
             case 4:
-                echo "36";
                 $controller = ucfirst($uri[1])."Controller";
                 $controller = "Application\\Controllers\\{$controller}";
                 if(class_exists($controller)){

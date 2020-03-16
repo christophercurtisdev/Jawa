@@ -68,10 +68,10 @@ class JAWAConnection
     public function makeTable(string $tableName, array $columns, string $columnPrefix = null, bool $cache = true)
     {
         // Is prefix specified, should it be, and does it already exist
-        if(!getenv('DISABLE_COLUMN_PREFIXING') && !empty(self::$existingPrefixes))
+        if(!empty(self::$existingPrefixes))
         {
             if(!$columnPrefix) {
-                return "Prefix missing, disable force column prefixing by adding 'DISABLE_COLUMN_PREFIXING = true' to env.php file";
+                return "Prefix missing";
             }
 
             if(in_array($columnPrefix, self::$existingPrefixes)){
