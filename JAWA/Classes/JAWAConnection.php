@@ -8,7 +8,7 @@ class JAWAConnection
 {
     private static PDO $pdo;
     private static $instance = null;
-    private static $existingPrefixes;
+    private static array $existingPrefixes;
 
     private function __construct()
     {
