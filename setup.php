@@ -13,7 +13,7 @@ $fresh = $conn->allWhere("information_schema.TABLES", "TABLE_NAME = 'table_cache
 if(empty($fresh)) {
 
     foreach (get_declared_classes() as $class) {
-        if (strpos($class, DIRECTORY_SEPARATOR . 'Models' . DIRECTORY_SEPARATOR)) {
+        if (strpos($class, '\\Models\\')) {
             $object = new $class([]);
             print("Making table ".$object::tableName()." from model.\n");
             $conn->makeTable($object::tableName(), $object::columns(), $object::tablePrefix());

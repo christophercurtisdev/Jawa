@@ -9,7 +9,7 @@ RUN apt-get update \
   | php -- --install-dir=/usr/local/bin --filename=composer
 
 #ADD config/xdebug.ini          /usr/local/etc/php/xdebug.ini
-ADD config/php.ini /usr/local/etc/php/php.ini
+#ADD config/php.ini /usr/local/etc/php/php.ini
 ADD config/apache.conf         /etc/apache2/sites-available/jawa.conf
 
 RUN a2enmod rewrite

@@ -1,14 +1,22 @@
 version: "3"
 
 services:
-  legacy-application:
-    build:
-        context: .
-        dockerfile: Dockerfile
+  web:
+    build: .
     ports:
-    - "5001:80"
+      - "80:80"
     volumes:
-    - .:/var/www/jawa
-
+      - .:/var/www/jawa
+    links:
+      - mysql
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jawadb
+      MYSQL_USER: jawa
+      MYSQL_PASSWORD: jawa
+    ports:
+      - "3306:3306"
 volumes:
-  mysql_data: { driver: local }
+  mysql-data: { driver: local }

@@ -62,4 +62,10 @@ abstract class JAWAModel implements JAWAModelInterface
     {
         return JAWAConnection::getInstance()->all($this->tableName());
     }
+
+    public function references(array $reference, string $column)
+    {
+        $referenceTable = array_keys($reference)[0];
+        return JAWAConnection::getInstance()->applyForeignKey(self::tableName(), $column, $referenceTable, $reference[0], "fk_".self::tableName()."_".$referenceTable);
+    }
 }

@@ -265,7 +265,8 @@ class JAWAConnection
     public function applyForeignKey($table, $column, $referenceTable, $referenceColumn, $fkName)
     {
         $sql = "ALTER TABLE {$table} ADD CONSTRAINT {$fkName} FOREIGN KEY ({$column}) REFERENCES {$referenceTable}({$referenceColumn});";
-        $stmt = self::$pdo->prepare($sql);
-        $stmt->execute();
+        return $sql;
+        //$stmt = self::$pdo->prepare($sql);
+        //$stmt->execute();
     }
 }

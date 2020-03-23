@@ -9,4 +9,5 @@ interface JAWAModelInterface
     public static function tableName(string $string = null): ?string;
     public function fields(array $array = null): ?array;
     public function validateFields(array $array): bool;
+    public function references(array $reference, string $column);
 }
