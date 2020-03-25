@@ -1,0 +1,35 @@
+# This is an appspec.yml template file for use with the Coin Legacy EC2 deployment
+# via CodeDeploy service
+#
+#
+version: 0.0
+os: linux
+
+files:
+  - source: / # The source code
+    destination: /var/www/jawa
+
+  # If you are not running any commands on the Amazon EC2 instance, then remove
+  #   the "hooks" section altogether. A blank or incomplete "hooks" section
+  #   may cause associated deployments to fail.
+  hooks:
+
+    ApplicationStop:
+      - location: /scripts/appStop.sh
+        timeout: 60
+        runas: root
+
+    BeforeInstall:
+      - location: /scripts/beforeInstall.sh
+        timeout: 60
+        runas: root
+  .
+ApplicationStart:
+  - location: /scripts/appStart.sh
+    timeout: 60
+    runas: root
+
+ValidateService:
+  - location: /scripts/validate.sh
+    timeout: 60
+    runas: root
